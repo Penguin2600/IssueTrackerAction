@@ -1,0 +1,20 @@
+name: "Issue Tracker Stuff"
+description: "Does Issue Tracker Things"
+author: "Charles Bock <Charles@CharlesBock.com>"
+branding:
+  icon: star
+  color: purple
+inputs:
+  pointslabel:
+    description: "pattern to detect the countable points label"
+    required: false
+    default: "points"
+  labels:
+    description: "comma-separated labels to filter the issues"
+    required: false
+outputs:
+  pointscount:
+    description: 'The total points counted'
+runs:
+  using: "node12"
+  main: "dist/index.js"

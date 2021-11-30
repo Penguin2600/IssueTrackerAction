@@ -1,0 +1,24 @@
+{
+  "name": "IssueTrackerAction",
+  "version": "1.0.0",
+  "description": "Does issue tracker stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Penguin2600/IssueTrackerAction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Penguin2600/IssueTrackerAction/issues"
+  },
+  "homepage": "https://github.com/Penguin2600/IssueTrackerAction#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  }
+}
