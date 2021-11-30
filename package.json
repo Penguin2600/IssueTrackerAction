@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Penguin2600/IssueTrackerAction#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0"
+    "@actions/github": "^5.0.0",
+    "@octokit/rest": "^18.12.0",
+    "octokit": "^1.7.1"
   }
 }

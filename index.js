@@ -1,24 +1,27 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { Octokit } = require("@octokit/rest");
 
 try {
 
     const pointsLabel = core.getInput('pointslabel');
     const labelsFilter = core.getInput('labels');
+    const token = core.getInput('GITHUB_TOKEN');
+    let nameAndRepo = core.getInput('GITHUB_REPOSITORY').split("/")
 
-    const getContents = async (pointsLabel) => {
-        const state = 'open'
-        const token = core.getInput('GITHUB_TOKEN');
-        const octokit = new github.GitHub(token);
-        const repository = github.context.repo;
-        const list = await octokit.issues.listForRepo({
-            ...repository,
-            state,
-            pointsLabel
-        });
-        return list.data
-    }
-    result = getContents(pointsLabel)
+    const octokit = new Octokit({
+        auth: token,
+      });
+    
+    console.log(nameAndRepo)
+    console.log(token)
+
+    let result = octokit.rest.issues.listForRepo({
+        owner: nameAndRepo[1],
+        repo: nameAndRepo[0],
+      });
+
+
     console.log(result)
     console.log(`pointsLabel: ${pointsLabel}!`);
     const pointscount = (pointsLabel * 5)
