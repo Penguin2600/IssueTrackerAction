@@ -5,7 +5,20 @@ try {
 
   const pointsLabel = core.getInput('pointslabel');
   const labelsFilter = core.getInput('labels');
+  const state = 'open'
+  const token = core.getInput('GITHUB_TOKEN');
 
+  const octokit = new github.GitHub(token);
+
+  const repository = github.context.repo;
+
+  const list = await octokit.issues.listForRepo({
+    ...repository,
+    state,
+    pointsLabel
+  });
+
+  console.log(list.data)
   console.log(`pointsLabel: ${pointsLabel}!`);
   const pointscount = (pointsLabel*5)
   console.log(`pointscount: ${pointscount}!`);
