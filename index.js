@@ -8,6 +8,7 @@ try {
     const labelsFilter = core.getInput('labels');
     const token = core.getInput('GITHUB_TOKEN');
     let nameAndRepo = core.getInput('GITHUB_REPOSITORY').split("/")
+    console.log(core.getInput('GITHUB_REPOSITORY'))
 
     const octokit = new Octokit({
         auth: token,
@@ -15,7 +16,8 @@ try {
     
     console.log(nameAndRepo)
     console.log(token)
-
+    console.log("Asdasd")
+    
     let result = octokit.rest.issues.listForRepo({
         owner: nameAndRepo[1],
         repo: nameAndRepo[0],
