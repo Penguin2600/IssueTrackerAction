@@ -8,6 +8,7 @@ async function run() {
         let ownerAndRepo = core.getInput('repo').split("/")
         let ownerValue = ownerAndRepo[0]
         let repoValue = ownerAndRepo[1]
+        let pointsCount = 0
 
         const octokit = github.getOctokit(token)
 
@@ -17,8 +18,21 @@ async function run() {
         });
 
         let data = result['data']
-        data.forEach(issue => console.log(issue['labels']));
-        core.setOutput("pointscount", 99);
+
+        data.forEach(issue => {
+            let labels = issue['labels']
+            if (labels) {
+                labels.forEach(label => {
+                    let name = label['name']
+                    if name.includes(pointsLabel) {
+                        let pointsValue = name.split("::")[1]
+                        pointsCount += pointsValue
+                    }
+                }
+            }
+        });
+
+        core.setOutput("pointscount", pointsCount);
 
     } catch (error) {
         core.setFailed(error.message);
