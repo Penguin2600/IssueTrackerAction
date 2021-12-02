@@ -7,8 +7,7 @@ try {
     const pointsLabel = core.getInput('pointslabel');
     const labelsFilter = core.getInput('labels');
     const token = core.getInput('repo-token');
-    let nameAndRepo = core.getInput('GITHUB_REPOSITORY').split("/")
-    console.log(core.getInput('GITHUB_REPOSITORY'))
+    let nameAndRepo = core.getInput('repo').split("/")
 
     const octokit = new Octokit({
         auth: token,
