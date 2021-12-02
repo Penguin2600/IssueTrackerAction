@@ -5,6 +5,10 @@ branding:
   icon: star
   color: purple
 inputs:
+  GITHUB_TOKEN:
+    description: "token"
+    required: true
+    default: '${{ secrets.GITHUB_TOKEN }}'
   pointslabel:
     description: "pattern to detect the countable points label"
     required: false
