@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const { Octokit } = require("@octokit/rest");
+const { createActionAuth } = require("@octokit/auth-action");
 
 try {
     const pointsLabel = core.getInput('pointslabel');
@@ -10,11 +11,9 @@ try {
     let ownerValue = ownerAndRepo[0]
     let repoValue = ownerAndRepo[1]
 
-    const octokit = new Octokit({
-        auth: token,
-      });
+    const octokit = new github.Github(token);
 
-    let result = octokit.rest.issues.listForRepo({
+    let result = octokit.issues.listForRepo({
         owner: ownerValue,
         repo: repoValue
       });
