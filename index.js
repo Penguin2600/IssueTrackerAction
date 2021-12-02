@@ -27,6 +27,7 @@ async function run() {
                     if (name.includes(pointsLabel)) {
                         let pointsValue = name.split("::")[1]
                         pointsCount += parseInt(pointsValue)
+                        console.log(pointsCount, pointsValue)
                     }
                 });
             }
