@@ -30,7 +30,7 @@ async function run() {
                         console.log(pointsValue)
                         pointsCount += pointsValue
                     }
-                }
+                });
             }
         });
 
