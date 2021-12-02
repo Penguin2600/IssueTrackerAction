@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 async function run() {
     try {
-        const pointsLabel = core.getInput('pointslabels');
+        const pointsLabel = core.getInput('pointslabel');
         const token = core.getInput('repo-token');
         let ownerAndRepo = core.getInput('repo').split("/")
         let ownerValue = ownerAndRepo[0]
