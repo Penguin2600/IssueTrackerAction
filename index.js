@@ -14,6 +14,8 @@ try {
       });
     
     console.log(nameAndRepo)
+    console.log(`${GITHUB_REPOSITORY}!`)
+
     console.log(core.getInput('repo'))
     console.log("Asdasd")
 
