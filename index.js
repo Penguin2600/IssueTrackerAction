@@ -1,22 +1,23 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { Octokit } = require("@octokit/rest");
-const { createActionAuth } = require("@octokit/auth-action");
 
 async function run() {
     try {
         const pointsLabel = core.getInput('pointslabel');
-        const labelsFilter = core.getInput('labels');
+        let labelsFilter = core.getInput('labels');
         const token = core.getInput('repo-token');
         let ownerAndRepo = core.getInput('repo').split("/")
         let ownerValue = ownerAndRepo[0]
         let repoValue = ownerAndRepo[1]
 
+        labelsFilter += ","+pointsLabel
+
         const octokit = github.getOctokit(token)
 
         let result = await octokit.rest.issues.listForRepo({
             owner: ownerValue,
-            repo: repoValue
+            repo: repoValue,
+            labels: labelsFilter
         });
 
         console.log(result)
