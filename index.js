@@ -16,7 +16,8 @@ async function run() {
             repo: repoValue
         });
 
-        console.log(result)
+        let data = result['data']
+        data.forEach(issue => console.log(issue['labels']));
         core.setOutput("pointscount", 99);
 
     } catch (error) {
