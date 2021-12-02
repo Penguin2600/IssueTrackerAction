@@ -14,7 +14,7 @@ async function run() {
         let result = await octokit.rest.issues.listForRepo({
             owner: ownerValue,
             repo: repoValue
-        }).data;
+        });
 
         console.log(result)
         core.setOutput("pointscount", 99);
