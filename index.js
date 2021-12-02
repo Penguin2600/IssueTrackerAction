@@ -14,7 +14,7 @@ try {
       });
     
     console.log(nameAndRepo)
-    console.log(token)
+    console.log(core.getInput('repo'))
     console.log("Asdasd")
 
     let result = octokit.rest.issues.listForRepo({

@@ -8,6 +8,9 @@ inputs:
   repo-token:
     description: "token"
     required: true
+  repo:
+    description: "repo name"
+    required: true
   pointslabel:
     description: "pattern to detect the countable points label"
     required: false
