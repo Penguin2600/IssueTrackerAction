@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 async function run() {
     try {
-        const pointsLabel = core.getInput('pointslabel');
+        const pointsLabel = core.getInput('pointslabels');
         const token = core.getInput('repo-token');
         let ownerAndRepo = core.getInput('repo').split("/")
         let ownerValue = ownerAndRepo[0]
@@ -13,9 +13,8 @@ async function run() {
 
         let result = await octokit.rest.issues.listForRepo({
             owner: ownerValue,
-            repo: repoValue,
-            labels: pointsLabel
-        });
+            repo: repoValue
+        }).data;
 
         console.log(result)
         core.setOutput("pointscount", 99);
