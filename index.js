@@ -6,7 +6,7 @@ try {
 
     const pointsLabel = core.getInput('pointslabel');
     const labelsFilter = core.getInput('labels');
-    const token = core.getInput('GITHUB_TOKEN');
+    const token = core.getInput('repo-token');
     let nameAndRepo = core.getInput('GITHUB_REPOSITORY').split("/")
     console.log(core.getInput('GITHUB_REPOSITORY'))
 
@@ -17,7 +17,7 @@ try {
     console.log(nameAndRepo)
     console.log(token)
     console.log("Asdasd")
-    
+
     let result = octokit.rest.issues.listForRepo({
         owner: nameAndRepo[1],
         repo: nameAndRepo[0],
