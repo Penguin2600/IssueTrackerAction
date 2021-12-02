@@ -15,9 +15,6 @@ inputs:
     description: "pattern to detect the countable points label"
     required: false
     default: "points"
-  labels:
-    description: "comma-separated labels to filter the issues"
-    required: false
 outputs:
   pointscount:
     description: 'The total points counted'

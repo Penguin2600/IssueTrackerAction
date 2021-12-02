@@ -4,20 +4,17 @@ const github = require('@actions/github');
 async function run() {
     try {
         const pointsLabel = core.getInput('pointslabel');
-        let labelsFilter = core.getInput('labels');
         const token = core.getInput('repo-token');
         let ownerAndRepo = core.getInput('repo').split("/")
         let ownerValue = ownerAndRepo[0]
         let repoValue = ownerAndRepo[1]
-
-        labelsFilter += ","+pointsLabel
 
         const octokit = github.getOctokit(token)
 
         let result = await octokit.rest.issues.listForRepo({
             owner: ownerValue,
             repo: repoValue,
-            labels: labelsFilter
+            labels: pointsLabel
         });
 
         console.log(result)
