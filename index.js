@@ -24,8 +24,10 @@ async function run() {
             if (labels) {
                 labels.forEach(label => {
                     let name = label['name']
-                    if name.includes(pointsLabel) {
+                    console.log(name)
+                    if (name.includes(pointsLabel)) {
                         let pointsValue = name.split("::")[1]
+                        console.log(pointsValue)
                         pointsCount += pointsValue
                     }
                 }
