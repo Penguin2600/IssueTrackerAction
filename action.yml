@@ -13,8 +13,12 @@ inputs:
     required: true
   pointslabel:
     description: "pattern to detect the countable points label"
-    required: false
+    required: true
     default: "points"
+  outputfile:
+      description: "pattern to detect the countable points label"
+      required: false
+      default: docs/pointscount.md
 outputs:
   pointscount:
     description: 'The total points counted'

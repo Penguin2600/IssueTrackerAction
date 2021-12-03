@@ -1,8 +1,15 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs')
+
+function writeContent(pointsCount) {
+  const content =  `### Current Total Points Count: ${pointsCount}`; 
+  fs.writeFileSync(outputfile, content)
+}
 
 async function run() {
     try {
+        const outputfile = core.getInput('outputfile');
         const pointsLabel = core.getInput('pointslabel');
         const token = core.getInput('repo-token');
         let ownerAndRepo = core.getInput('repo').split("/")
@@ -34,6 +41,7 @@ async function run() {
         });
 
         core.setOutput("pointscount", pointsCount);
+        writeContent(pointsCount)
 
     } catch (error) {
         core.setFailed(error.message);
