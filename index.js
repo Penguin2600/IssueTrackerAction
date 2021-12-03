@@ -3,7 +3,14 @@ const github = require('@actions/github');
 const fs = require('fs')
 
 function writeContent(outputfile, pointsCount) {
-  const content =  `### Current Total Points Count: ${pointsCount}`; 
+  const content =  `
+    ---
+    title: Points
+    ---
+    ### Current Total Points Count:  
+    * ${pointsCount}
+  `; 
+
   fs.writeFileSync(outputfile, content)
 }
 
