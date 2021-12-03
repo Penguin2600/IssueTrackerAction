@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs')
 
-function writeContent(pointsCount) {
+function writeContent(outputfile, pointsCount) {
   const content =  `### Current Total Points Count: ${pointsCount}`; 
   fs.writeFileSync(outputfile, content)
 }
@@ -41,7 +41,7 @@ async function run() {
         });
 
         core.setOutput("pointscount", pointsCount);
-        writeContent(pointsCount)
+        writeContent(outputfile, pointsCount)
 
     } catch (error) {
         core.setFailed(error.message);
